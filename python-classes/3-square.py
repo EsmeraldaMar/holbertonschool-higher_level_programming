@@ -4,7 +4,7 @@
 
 class Square:
     """
-    Class that defines properties of square based on 1-square
+    Class that defines properties of square based on 2-square
     """
     def __init__(self, size=0):
         """Initialise new square
