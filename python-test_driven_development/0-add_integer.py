@@ -15,14 +15,14 @@ def add_integer(a, b=98):
     b (int, optional): second value defaults to 98
     returns the sum
     """
-    if not isinstance(a, int) and not isinstance(a, float):
+    if a is None or (not isinstance(a, int) and not isinstance(a, float)):
         raise TypeError("a must be an integer")
-    if not isinstance(b, int) and not isinstance(b, float):
+    if b is None or (not isinstance(b, int) and not isinstance(b, float)):
         raise TypeError("b must be an integer")
-    if (a == float('NaN')):
-        raise ValueError("can't convert NaN to integer")
-    if isinstance(a, float):
-        a = int(a)
-    if isinstance(b, float):
-        b = int(b)
-    return a + b
+    #if (a == float('NaN')):
+        #raise ValueError("can't convert NaN to integer")
+    # if isinstance(a, float):
+    #     a = int(a)
+    # if isinstance(b, float):
+    #     b = int(b)
+    return int(a) + int(b)
