@@ -8,7 +8,12 @@ function name: add_integer()
 
 def add_integer(a, b=98):
     """
-    add_integer: adds integers and returns the sum
+    add_integer: adds integers and floats
+
+    Args:
+    a(int): First value
+    b (int, optional): second value defaults to 98
+    returns the sum
     """
     if not isinstance(a, int) and not isinstance(a, float):
         raise TypeError("a must be an integer")
@@ -16,9 +21,8 @@ def add_integer(a, b=98):
         raise TypeError("b must be an integer")
     if (a == float('NaN')):
         raise ValueError("can't convert NaN to integer")
-    return (int(a) + int(b))
-
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testfile('tests/0-add_integer.txt')
+    if isinstance(a, float):
+        a = int(a)
+    if isinstance(b, float):
+        b = int(b)
+    return a + b
