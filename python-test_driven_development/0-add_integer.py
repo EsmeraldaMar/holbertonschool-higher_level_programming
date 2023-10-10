@@ -19,7 +19,7 @@ def add_integer(a, b=98):
         raise TypeError("a must be an integer")
     if not isinstance(b, int) and not isinstance(b, float):
         raise TypeError("b must be an integer")
-    if math.isnan(a):
+    if (a == float('NaN')):
         raise ValueError("can't convert NaN to integer")
     if isinstance(a, float):
         a = int(a)
