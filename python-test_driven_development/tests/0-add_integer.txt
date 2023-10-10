@@ -5,22 +5,48 @@ Using ``add_integer``
 First import ``add_integer`` from the ``0-add_integer`` file:
     >>> add_integer = __import__('0-add_integer').add_integer
 Tests:
-
+    Simple addition test
     >>> add_integer(10, 8)
     18
 
+    Simple addition test with float
     >>> add_integer(5.3, 6.3)
     11
 
+    Simple addition with one float (a) and int (b)
     >>> add_integer(1.6, 2)
     3
 
+    Addition with string as for a
     >>> add_integer("string", 2)
     Traceback (most recent call last):
     ...
     TypeError: a must be an integer
 
+    Addition with string as for b
     >>> add_integer(2, "string")
     Traceback (most recent call last):
     ...
     TypeError: b must be an integer
+
+    Addition with float inf
+    >>> add_integer(float('inf'), 2)
+    Traceback (most recent call last):
+    ...
+    OverflowError: cannot convert float infinity to integer
+
+    Addition with float NaN
+    >>> add_integer(float('NaN'), 3)
+    Traceback (most recent call last):
+    ...
+    ValueError: cannot convert float NaN to integer
+
+    Test missing both argument
+    >>> add_integer()
+    Traceback (most recent call last):
+    ...
+    TypeError: add_integer() missing 1 required positional argument: 'a'
+
+    Test missing one argument b
+    >>> add_integer(1,)
+    99

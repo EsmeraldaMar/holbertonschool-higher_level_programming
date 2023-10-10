@@ -19,10 +19,4 @@ def add_integer(a, b=98):
         raise TypeError("a must be an integer")
     if b is None or (isinstance(b, int) is not True and isinstance(b, float) is not True):
         raise TypeError("b must be an integer")
-    #if (a == float('NaN')):
-        #raise ValueError("can't convert NaN to integer")
-    # if isinstance(a, float):
-    #     a = int(a)
-    # if isinstance(b, float):
-    #     b = int(b)
     return int(a) + int(b)
