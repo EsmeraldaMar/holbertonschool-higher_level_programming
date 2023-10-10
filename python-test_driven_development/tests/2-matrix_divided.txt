@@ -86,7 +86,7 @@ Tests:
     Test - list containing one list:
     >>> matrix = [[1, 2, 3]]
     >>> matrix_divided(matrix, 3)
-    [[0.33, 0.67, 1.00]]
+    [[0.33, 0.67, 1.0]]
 
     Test - only one argument:
     >>> matrix_divided(2)
