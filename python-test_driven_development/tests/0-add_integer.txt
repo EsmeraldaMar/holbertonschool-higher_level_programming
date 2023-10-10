@@ -1,0 +1,21 @@
+#Doctest for ../0-add_integer.py
+
+>>> add_integer = __import__('0-add_integer').add_integer
+>>> add_integer(10, 8)
+18
+>>> add_integer(5.3, 6.3)
+11
+>>> add_integer(1.6, 2)
+3
+>>> add_integer("string", 2)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer
+>>> add_integer(2, "string")
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer
+>>> add_integer(float('NaN'), 9.1)
+Traceback (most recent call last):
+    ...
+ValueError: cannot convert float NaN to integer
