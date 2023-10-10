@@ -1,0 +1,117 @@
+The ``2-matrix_divided`` module
+======================
+
+Using ``matrix_divided``
+-------------------
+
+First we import : Import ``matrix_divided`` from the ``2-matrix_divided`` file:
+
+	>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+Tests:
+
+    Test - div is not an int or float
+    >>> matrix = [[2, 5, 8], [7, 2, 8]]
+    >>> matrix_divided(matrix, "string")
+    Traceback (most recent call last):
+    ...
+    TypeError: div must be a number
+
+    Test - div as 0 
+    >>> matrix = [[2, 5, 8], [7, 2, 8]]
+    >>> matrix_divided(matrix, 0)
+    Traceback (most recent call last):
+    ...
+    ZeroDivisionError: division by zero
+
+    Test - lists which only contains floats:
+    >>> matrix = [[1.2, 6.7, 9.8], [3.4, 6.9, 2.4]]
+    >>> matrix_divided(matrix, 2)
+    [[0.6, 3.35, 4.9], [1.7, 3.45, 1.2]]
+
+    Test - lists which only contains integers
+    >>> matrix = [[2, 6, 9], [3, 6, 4]]
+    >>> matrix_divided(matrix, 2)
+    [[1.0, 3.0, 4.5], [1.5, 3.0, 2.0]]
+
+    Test - empty list
+    >>> matrix = []
+    >>> matrix_divided(matrix, 4)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+    Test - list containing lists with no elements:
+    >>> matrix = [[], []]
+    >>> matrix_divided(matrix, 4)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+    Test - list which contain non - list elements:
+    >>> matrix = ["hi", "clearly", "notalist", 3, 5, "a"]
+    >>> matrix_divided(matrix, 2)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+    Test - list containing lists with non integer or float elments:
+    >>> matrix = [["clearly", "a"], ["notint", "notfloat"]]
+    >>> matrix_divided(matrix, 4)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+    Test - list which contains different number of elements:
+    >>>matrix = [[1, 4, 6], [4, 8]]
+    >>> matrix_divided(matrix, 3)
+    Traceback (most recent call last):
+    ...
+    TypeError: Each row of the matrix must have the same size
+
+    Test - div being float("inf"):
+    >>> matrix = [[1, 4, 6,]]
+    >>> matrix_divided(matrix, float("inf"))
+    [[0.0, 0.0, 0.0]]
+
+    >>> matrix = [[1.1, 4.4, 6.6,]]
+    >>> matrix_divided(matrix, float("inf"))
+    [[0.0, 0.0, 0.0]]
+
+    Test - lists contains both integers and floats
+    >>> matrix = [[1, 3.4, 7], [5.8, 9, 7.9]]
+    >>> matrix_divided(matrix, 2)
+    [[0.5, 1.7, 3.5], [2.9, 4.5, 3.95]]
+
+    Test - list containing one list:
+    >>> matrix = [[1, 2, 3]]
+    >>> matrix_divided(matrix, 3)
+    [[0.33, 0.67, 1.0]]
+
+    Test - only one argument:
+    >>> matrix_divided(2)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+    Test - no arguments
+    >>> matrix_divided()
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+    Test - check with overflow
+    >>> matrix = [[3, 4, 5]]
+    >>> matrix_divided(matrix, 2.0 ** 1024)
+    ... # doctest: +ELLIPSIS
+    Traceback (most recent call last):
+    ...
+    OverflowError: (34, 'Numerical result out of range')
+
+    >>> matrix = [[1., 2., 3.]]
+    >>> matrix_divided(matrix, 2.0 ** 1024)
+    ... # doctest: +ELLIPSIS
+    Traceback (most recent call last):
+    ...
+    OverflowError: (34, 'Numerical result out of range')
+
