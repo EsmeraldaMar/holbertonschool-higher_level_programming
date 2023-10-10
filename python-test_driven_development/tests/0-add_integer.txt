@@ -16,7 +16,11 @@ Tests:
     3
 
     >>> add_integer("string", 2)
-    a must be an integer
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
 
     >>> add_integer(2, "string")
-    b must be an integer
+    Traceback (most recent call last):
+    ...
+    TypeError: b must be an integer
