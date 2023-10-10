@@ -1,14 +1,22 @@
-#Doctest for ../0-add_integer.py
+The ``add_integer`` module
+======================
+Using ``add_integer``
+-------------------
+First import ``add_integer`` from the ``0-add_integer`` file:
+    >>> add_integer = __import__('0-add_integer').add_integer
+Tests:
 
->>> add_integer = __import__('0-add_integer').add_integer
->>> add_integer(10, 8)
-18
->>> add_integer(5.3, 6.3)
-11
->>> add_integer(1.6, 2)
-3
->>> add_integer("string", 2)
-a must be an integer
->>> add_integer(2, "string")
-b must be an integer
+    >>> add_integer(10, 8)
+    18
 
+    >>> add_integer(5.3, 6.3)
+    11
+
+    >>> add_integer(1.6, 2)
+    3
+
+    >>> add_integer("string", 2)
+    a must be an integer
+
+    >>> add_integer(2, "string")
+    b must be an integer
