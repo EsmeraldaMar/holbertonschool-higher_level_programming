@@ -23,7 +23,7 @@ Import ``say_my_name`` from the ``3-say_my_name`` module:
     >>> say_my_name(1, "Maria")
     Traceback (most recent call last):
     ...
-    TypeError: last_name must be a string
+    TypeError: first_name must be a string
 
     Test - if both arguments are non strings
     >>> say_my_name(1, 3)
