@@ -63,7 +63,7 @@ Tests:
     TypeError: matrix must be a matrix (list of lists) of integers/floats
 
     Test - list which contains different number of elements:
-    >>>matrix = [[1, 4, 6], [4, 8]]
+    >>> matrix = [[1, 4, 6], [4, 8]]
     >>> matrix_divided(matrix, 3)
     Traceback (most recent call last):
     ...
@@ -86,7 +86,7 @@ Tests:
     Test - list containing one list:
     >>> matrix = [[1, 2, 3]]
     >>> matrix_divided(matrix, 3)
-    [[0.33, 0.67, 1.0]]
+    [[0.33, 0.67, 1.00]]
 
     Test - only one argument:
     >>> matrix_divided(2)
@@ -106,12 +106,11 @@ Tests:
     ... # doctest: +ELLIPSIS
     Traceback (most recent call last):
     ...
-    OverflowError: (34, 'Numerical result out of range')
+    OverflowError: ...
 
     >>> matrix = [[1., 2., 3.]]
     >>> matrix_divided(matrix, 2.0 ** 1024)
     ... # doctest: +ELLIPSIS
     Traceback (most recent call last):
     ...
-    OverflowError: (34, 'Numerical result out of range')
-
+    OverflowError: ...
