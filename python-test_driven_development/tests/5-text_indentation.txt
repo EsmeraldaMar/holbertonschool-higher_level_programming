@@ -1,0 +1,54 @@
+The ``5-text_indentation`` module
+======================
+
+Using ``text_indentation``
+-------------------
+
+Import ``text_indentation`` from the ``5-text_indentation`` module:
+
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+   Tests:
+
+   Test - argument as string
+   >>> text_indentation("Now, I would like to go to sleep, do I really understand unit tests, no not really but I am trying my best! ")
+   Now, I would like to go to sleep, do I really understand unit tests, no not really but I am trying my best.
+   <BLANKLINE>
+
+   Test - argument as empty string
+   >>> text_indentation("")
+   >>>
+
+   Test - argument with non - strings
+   >>> text_indentation(123)
+   Traceback (most recent call last):
+   ...
+   TypeError: text must be a string
+
+   Test - argument with multiple '?', '.', or ':' in string:
+    >>> text_indentation(".?:.Lorem ipsum dolor sit amet, consectetur adipiscing elit.? beatiorem! Iam ruinas videres?.:")
+    .
+	<BLANKLINE>
+	?
+	<BLANKLINE>
+	:
+	<BLANKLINE>
+	.
+	<BLANKLINE>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+	<BLANKLINE>
+	?
+	<BLANKLINE>
+	beatiorem! Iam ruinas videres?
+	<BLANKLINE>
+	.
+	<BLANKLINE>
+	:
+	<BLANKLINE>
+
+    Test - argument with multiple spaces at the end or beginning of text:
+    >>> text_indentation("    Hi I would like some food    okay sure, here have some.      It will be 10 dollars! Okay take it    ")
+        Hi I would like some food    okay sure, here have some.
+        <BLANKLINE>
+        It will be 10 dollars! Okay take it    
+   
