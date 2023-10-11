@@ -25,9 +25,9 @@ def text_indentation(text):
             print(i, end = "\n\n")
             no_space = True
         else:
-            if (no_space):
-                if i == " ":
-                    pass
+            if no_space and i == " ":
+                continue
+            elif no_space and i != " ":
                 no_space = False
             print(i, end = "")
         
