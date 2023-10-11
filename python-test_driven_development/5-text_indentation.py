@@ -10,23 +10,27 @@ def text_indentation(text):
     Text Indenation Function
 
     Args:
-    text (str): string of text
+    text (str): string of text to be indented
+
+    Return: Indented Text
     """
 
     if type(text) is not str:
         raise TypeError("text must be a string")
-    
-    no_space = True
-    size = 0
+ 
     text = text.strip()
-    new_text = ""
     for i in text:
-        if i is " " and no_space:
-            pass
-        elif i is "." or i is "?" or i is ":":
-            new_text += i + "\n\n"
-            no_space = True
+        if i is "." or i is "?" or i is ":":
+            print(i, end = "\n\n")
         else:
-            new_text += i
-            no_space = False
-        print(new_text,end='')
+            print(i, end = "")
+        
+    # for i in text:
+
+    #     elif i is "." or i is "?" or i is ":":
+    #         new_text += i + "\n\n"
+    #         no_space = True
+    #     else:
+    #         new_text += i
+    #         no_space = False
+    #print(new_text, end='')
