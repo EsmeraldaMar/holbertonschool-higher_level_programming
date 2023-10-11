@@ -17,26 +17,16 @@ def text_indentation(text):
 
     if type(text) is not str:
         raise TypeError("text must be a string")
- 
+
     text = text.strip()
     no_space = False
     for i in text:
         if i == "." or i == "?" or i == ":":
-            print(i, end = "\n\n")
+            print(i, end="\n\n")
             no_space = True
         else:
             if no_space and i == " ":
                 continue
             elif no_space and i != " ":
                 no_space = False
-            print(i, end = "")
-        
-    # for i in text:
-
-    #     elif i is "." or i is "?" or i is ":":
-    #         new_text += i + "\n\n"
-    #         no_space = True
-    #     else:
-    #         new_text += i
-    #         no_space = False
-    #print(new_text, end='')
+            print(i, end="")
