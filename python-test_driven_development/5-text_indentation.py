@@ -19,10 +19,16 @@ def text_indentation(text):
         raise TypeError("text must be a string")
  
     text = text.strip()
+    no_space = False
     for i in text:
-        if i is "." or i is "?" or i is ":":
+        if i == "." or i == "?" or i == ":":
             print(i, end = "\n\n")
+            no_space = True
         else:
+            if (no_space):
+                if i == " ":
+                    pass
+                no_space = False
             print(i, end = "")
         
     # for i in text:
