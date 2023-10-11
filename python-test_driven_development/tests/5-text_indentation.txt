@@ -55,7 +55,7 @@ Import ``text_indentation`` from the ``5-text_indentation`` module:
         Test - argument with multiple spaces at the end, middle beginning of text:
         >>> text_indentation("    Hi I would like some food    okay sure, here have some.      It will be 10 dollars! Okay take it    ")    
         Hi I would like some food    okay sure, here have some.
-        <BLANKLINE>
+
       It will be 10 dollars! Okay take it
 
         Test - argument with multiple spaces at beginning and end of text:
