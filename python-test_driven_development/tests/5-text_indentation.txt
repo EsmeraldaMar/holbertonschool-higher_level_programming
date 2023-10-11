@@ -8,53 +8,59 @@ Import ``text_indentation`` from the ``5-text_indentation`` module:
 
 	>>> text_indentation = __import__('5-text_indentation').text_indentation
 
-   Tests:
+    Tests:
 
-   Test - argument as string
-   >>> text_indentation("Now, I would like to go to sleep, do I really understand unit tests, no not really but I am trying my best! ")
-   Now, I would like to go to sleep, do I really understand unit tests, no not really but I am trying my best.
-   <BLANKLINE>
-
-   Test - argument as empty string
-   >>> text_indentation("")
-   >>>
-
-   Test - argument with non - strings
-   >>> text_indentation(123)
-   Traceback (most recent call last):
-   ...
-   TypeError: text must be a string
-
-   Test - argument with multiple '?', '.', or ':' in string:
-    >>> text_indentation(".?:.Lorem ipsum dolor sit amet, consectetur adipiscing elit.? beatiorem! Iam ruinas videres?.:")
-    .
-	<BLANKLINE>
-	?
-	<BLANKLINE>
-	:
-	<BLANKLINE>
-	.
-	<BLANKLINE>
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-	<BLANKLINE>
-	?
-	<BLANKLINE>
-	beatiorem! Iam ruinas videres?
-	<BLANKLINE>
-	.
-	<BLANKLINE>
-	:
-	<BLANKLINE>
-
-    Test - argument with multiple spaces at the end, middle beginning of text:
-    >>> text_indentation("    Hi I would like some food    okay sure, here have some.      It will be 10 dollars! Okay take it    ")    
-   Hi I would like some food    okay sure, here have some.
-        <BLANKLINE>
-      It will be 10 dollars! Okay take it
-
-    Test - argument with multiple spaces at beginning and end of text:
-    >>> text_indentation("    Hi I would like icecream. I would like mint-chocolate chip.   ")
-    Hi I would like icecream.
+    Test - argument as string
+    >>> text_indentation("Now, I would like to go to sleep, do I really understand unit tests, no not really but I am trying my best! ")
+    Now, I would like to go to sleep, do I really understand unit tests, no not really but I am trying my best! 
     <BLANKLINE>
-     I would like mint-chocolate chip.
-     <BLANKLINE>
+
+    Test - argument as empty string
+    >>> text_indentation("")
+    >>>
+
+    Test - argument with non - strings
+    >>> text_indentation(123)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+    Test - missing one argument
+    >>> text_indentation()
+    Traceback (most recent call last):
+    ...
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+    Test - argument with multiple '?', '.', or ':' in string:
+        >>> text_indentation(".?:.Lorem ipsum dolor sit amet, consectetur adipiscing elit.? beatiorem! Iam ruinas videres?.:")
+        .
+        <BLANKLINE>
+        ?
+        <BLANKLINE>
+        :
+        <BLANKLINE>
+        .
+        <BLANKLINE>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        <BLANKLINE>
+        ?
+        <BLANKLINE>
+        beatiorem! Iam ruinas videres?
+        <BLANKLINE>
+        .
+        <BLANKLINE>
+        :
+        <BLANKLINE>
+
+        Test - argument with multiple spaces at the end, middle beginning of text:
+        >>> text_indentation("    Hi I would like some food    okay sure, here have some.      It will be 10 dollars! Okay take it    ")    
+        Hi I would like some food    okay sure, here have some.
+            <BLANKLINE>
+        It will be 10 dollars! Okay take it
+
+        Test - argument with multiple spaces at beginning and end of text:
+        >>> text_indentation("    Hi I would like icecream. I would like mint-chocolate chip.   ")
+        Hi I would like icecream.
+        <BLANKLINE>
+        I would like mint-chocolate chip.
+        <BLANKLINE>
