@@ -5,7 +5,7 @@ New class for Rectangle
 
 
 class Rectangle:
-    """ Rectangle Class based on 1-rectangle """
+    """ Rectangle Class based on 2-rectangle """
 
     def __init__(self, width=0, height=0):
         self.width = width
