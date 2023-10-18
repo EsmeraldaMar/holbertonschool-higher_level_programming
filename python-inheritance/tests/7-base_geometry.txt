@@ -26,15 +26,23 @@ True
 
 Integers Tests and Negative:
 
+Area Excpetion Test:
+
+>>> f = BaseGeometry()
+>>> f.area()
+Traceback (most recent call last):
+...
+Exception: area() is not implemented
+
 >>> f.integer_validator()
 Traceback (most recent call last):
 ...
-NameError: name 'f' is not defined
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
 >>> f.integer_validator(1)
 Traceback (most recent call last):
 ...
-NameError: name 'f' is not defined
+TypeError: integer_validator() missing 1 required positional argument: 'value'
 
 >>> f.integer_validator(1, 2, 3)
 Traceback (most recent call last):
@@ -50,14 +58,6 @@ ValueError: name must be greater than 0
 Traceback (most recent call last):
 ...
 ValueError: name must be greater than 0
-
-Area Excpetion Test:
-
->>> f = BaseGeometry()
->>> f.area()
-Traceback (most recent call last):
-...
-Exception: area() is not implemented
 
 Implementing correct arguments Test:
 
