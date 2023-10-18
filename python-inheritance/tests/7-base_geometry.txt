@@ -58,6 +58,7 @@ Exception: area() is not implemented
 Implementing correct arguments Test:
 
 >>> f.integer_validator("name", 5)
+
 >>> bg = BaseGeometry()
 
 >>> bg.integer_validator("age",(3,))
@@ -92,7 +93,7 @@ TypeError: age must be an integer
 >>> bg.integer_validator("width", 89)
 
 >>> try:
-...     bg.integer_validator("name", "Kevin")
+...     bg.integer_validator("name", "John")
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 [TypeError] name must be an integer
@@ -113,16 +114,20 @@ TypeError: age must be an integer
 
 >>> bg.area()
 Traceback (most recent call last):
+...
 Exception: area() is not implemented
 
 >>> bg.integer_validator("age")
 Traceback (most recent call last):
+...
 TypeError: integer_validator() missing 1 required positional argument: 'value'
 
 >>> bg.integer_validator()
 Traceback (most recent call last):
+...
 TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
 >>> bg.integer_validator("Hello", 7, 8)
 Traceback (most recent call last):
+...
 TypeError: integer_validator() takes 3 positional arguments but 4 were given
