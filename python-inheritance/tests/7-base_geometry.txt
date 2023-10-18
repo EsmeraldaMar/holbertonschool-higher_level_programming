@@ -1,12 +1,16 @@
-Test for 7-base_geometry
+Test for "7-base_geometry" module
 --------------------------
 
+Import "BaseGeometry" from the "base_geometry" module:
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 >>>
 -------------------------------------------
 
 Using ``BaseGeometry``
 --------------------------
+
+Make an instance of BaseGeometry:
+    >>> bg = BaseGeometry()
 
 Tests:
 
