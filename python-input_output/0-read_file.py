@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """ Function which reads a text file (UTF8) and prints it to stdout """
 
 
