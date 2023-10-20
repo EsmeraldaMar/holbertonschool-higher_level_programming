@@ -10,6 +10,7 @@ class Student:
         self.age = age
 
     def to_json(self, attrs=None):
+        """ Retrieves a dictionary representation of a Student instance """
         if attrs is None:
             return (self.__dict__)
         else:
@@ -22,11 +23,12 @@ class Student:
                 return result
 
     def reload_from_json(self, json):
+        """ Replaces all attributes of the Student instance"""
         if not isinstance(json, dict):
             return
-        if json["first_name"]:
+        if "first_name" in json:
             self.first_name = json["first_name"]
-        if json["last_name"]:
+        if "last_name" in json:
             self.last_name = json["last_name"]
-        if json["age"]:
+        if "age" in json:
             self.age = json["age"]
