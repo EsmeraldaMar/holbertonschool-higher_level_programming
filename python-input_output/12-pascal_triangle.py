@@ -3,6 +3,7 @@
 
 
 def pascal_triangle(n):
+    """Function to create Pascal Triangle"""
     final = []
     if n <= 0:
         return final
