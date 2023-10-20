@@ -22,6 +22,8 @@ class Student:
                 return result
 
     def reload_from_json(self, json):
+        if not isinstance(json, dict):
+            return
         if json["first_name"]:
             self.first_name = json["first_name"]
         if json["last_name"]:
