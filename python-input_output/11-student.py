@@ -20,6 +20,7 @@ class Student:
                     if hasattr(self, attr):
                         result[attr] = getattr(self, attr)
                 return result
+
     def reload_from_json(self, json):
         if json["first_name"]:
             self.first_name = json["first_name"]
