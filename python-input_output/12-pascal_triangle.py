@@ -3,9 +3,9 @@
 
 
 def pascal_triangle(n):
-    if n <= 0:
-        return []
     final = []
+    if n <= 0:
+        return final
     for i in range(1, n + 1):
         new_list = []
         if i < 3:
