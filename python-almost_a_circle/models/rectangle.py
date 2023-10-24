@@ -81,19 +81,26 @@ class Rectangle(Base):
                 print("#", end="")
             print()
 
+    def update(self, *args, **kwargs):
+        """ Assigns an argument to each attribute"""
+        if args:
+            for arguments in range(len(args)):
+                if arguments == 0:
+                    self.id = args[arguments]
+                if arguments == 1:
+                    self.width = args[arguments]
+                if arguments == 2:
+                    self.height = args[arguments]
+                if arguments == 3:
+                    self.x = args[arguments]
+                if arguments == 4:
+                    self.y = args[arguments]
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+
     def __str__(self):
         """ Returns [Rectangle] (<id>) <x>/<y> - <width>/<height>"""
         return ("[{}] ({}) {:d}/{:d} - {:d}/{:d}".format(
             self.__class__.__name__, self.id, self.__x,
             self.__y, self.__width, self.__height))
-
-    def update(self, *args, **kwargs):
-        """ Assigns an argument to each attribute"""
-        try:
-            self.id = args[0]
-            self.width = args[1]
-            self.height = args[2]
-            self.x = args[3]
-            self.y = args[4]
-        except IndexError:
-            pass
