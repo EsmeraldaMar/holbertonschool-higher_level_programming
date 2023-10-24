@@ -76,7 +76,7 @@ class Rectangle(Base):
             print()
         for _ in range(self.__height):
             for _ in range(self.__x):
-                    print(" ", end="")
+                   print(" ", end="")
             for _ in range(self.__width):
                 print("#", end="")
             print()
@@ -86,3 +86,14 @@ class Rectangle(Base):
         return ("[{}] ({}) {:d}/{:d} - {:d}/{:d}".format(
             self.__class__.__name__, self.id, self.__x,
             self.__y, self.__width, self.__height))
+
+    def update(self, *args):
+        """ Assigns an argument to each attribute"""
+        try:
+            self.id = args[0]
+            self.width = args[1]
+            self.height = args[2]
+            self.x = args[3]
+            self.y = args[4]
+        except IndexError:
+            pass
