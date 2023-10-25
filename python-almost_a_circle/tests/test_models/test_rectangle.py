@@ -237,6 +237,22 @@ class TestRectangleMethods(unittest.TestCase):
         r1.width = 9
         self.assertEqual(r1.area(), 81)
 
+    def test_area_3(self):
+        """ Checking the return value of area method """
+        new = Rectangle(2, 2)
+        self.assertEqual(new.area(), 4)
+        new.width = 5
+        self.assertEqual(new.area(), 10)
+        new.height = 5
+        self.assertEqual(new.area(), 25)
+
+    def test_area_4(self):
+        """ Checking the return value of area method """
+        new = Rectangle(3, 8)
+        self.assertEqual(new.area(), 24)
+        new2 = Rectangle(10, 10)
+        self.assertEqual(new2.area(), 100)
+
     def test_basic_display(self):
         """ Test display without x and y """
         s1 = Rectangle(2,6)
@@ -244,3 +260,24 @@ class TestRectangleMethods(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as str_out:
             s1.display()
             self.assertEqual(str_out.getvalue(), result)
+
+    def test_dict_to_json(self):
+        """ Test Dictionary to JSON string """
+        r1 = Rectangle(2, 2)
+        dictionary = r1.to_dictionary()
+        json_dictionary = Base.to_json_string([dictionary])
+        res = "[{}]\n".format(dictionary.__str__())
+
+        with patch('sys.stdout', new=StringIO()) as str_out:
+            print(json_dictionary)
+            self.assertEqual(str_out.getvalue(), res.replace("'", "\""))
+
+    def test_check_value(self):
+        """ Test args passed """
+        with self.assertRaises(ValueError):
+            r1 = Rectangle(-1, 2)
+
+    def test_check_value_2(self):
+        """ Test args passed """
+        with self.assertRaises(ValueError):
+            r1 = Rectangle(1, -2)

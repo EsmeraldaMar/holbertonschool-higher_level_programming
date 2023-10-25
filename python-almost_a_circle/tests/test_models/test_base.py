@@ -53,6 +53,26 @@ class TestBaseMethods(unittest.TestCase):
         self.assertEqual(new2.id, 2)
         self.assertEqual(new3.id, 3)
 
+    def test_0_id(self):
+        """ Test id to see if it duplicates """
+        Base._Base__nb_objects = 0
+        b1 = Base()
+        b2 = Base()
+        b3 = Base()
+        b4 = Base(12)
+        b5 = Base()
+        self.assertEqual(b1.id, 1)
+        self.assertEqual(b2.id, 2)
+        self.assertEqual(b3.id, 3)
+        self.assertEqual(b4.id, 12)
+        self.assertEqual(b5.id, 4)
+
+    def test_consecutive_ids(self):
+        """ Tests consecutive ids """
+        b1 = Base()
+        b2 = Base()
+        self.assertEqual(b1.id + 1, b2.id)
+
     def test_string_id(self):
         """ Test string Id"""
         new = Base('2')
@@ -68,6 +88,14 @@ class TestBaseMethods(unittest.TestCase):
         with self.assertRaises(TypeError) as e:
             Base.__init__()
         msg = "__init__() missing 1 required positional argument: 'self'"
+        self.assertEqual(str(e.exception), msg)
+
+    def test_constructor_args_2(self):
+        """ Tests constructor signature with 2 notself args """
+        with self.assertRaises(TypeError) as e:
+            Base.__init__(self, 1, 2)
+        msg = "__init__() takes from 1 to 2 positional arguments but 3 \
+were given"
         self.assertEqual(str(e.exception), msg)
 
     def test_attr_priv(self):
@@ -110,3 +138,20 @@ class TestBaseMethods(unittest.TestCase):
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
             self.assertEqual(file.read(), "[]")
+    def test_load_from_file_empty_file(self):
+        """ Test use of load_from_file with empty file """
+        try:
+            os.remove("Rectangle.json")
+        except Exception:
+            pass
+        open("Rectangle.json", 'a').close()
+        self.assertEqual(Rectangle.load_from_file(), [])
+
+    def test_create(self):
+        """ Test create method """
+        r1 = Rectangle(3, 5, 1)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dictionary)
+        self.assertEqual(str(r1), str(r2))
+        self.assertFalse(r1 is r2)
+        self.assertFalse(r1 == r2)
