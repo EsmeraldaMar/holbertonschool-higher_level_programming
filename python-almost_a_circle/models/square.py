@@ -20,10 +20,12 @@ class Square(Rectangle):
     """ Public, Size Getter and Setters"""
     @property
     def size(self):
+        """ Retrieves itself"""
         return self.width
 
     @size.setter
     def size(self, value):
+        """ Inherits from rectangle"""
         self.width = value
         self.height = value
 

@@ -16,11 +16,13 @@ class Rectangle(Base):
     """ Width Getter and Setter"""
     @property
     def width(self):
+        """ Retrieves itself"""
         return self.__width
 
     @width.setter
     def width(self, width):
-        if type(width) != int:
+        """ Checks whether value is valid for width"""
+        if type(width) is not int:
             raise TypeError("width must be an integer")
         if width <= 0:
             raise ValueError("width must be > 0")
@@ -29,11 +31,13 @@ class Rectangle(Base):
     """ Height Getter and Setter"""
     @property
     def height(self):
+        """ Retrieves itself"""
         return self.__height
 
     @height.setter
     def height(self, height):
-        if type(height) != int:
+        """ Checks whether value is valid for height"""
+        if type(height) is not int:
             raise TypeError("height must be an integer")
         if height <= 0:
             raise ValueError("height must be > 0")
@@ -42,11 +46,13 @@ class Rectangle(Base):
     """ x Getter and Setter"""
     @property
     def x(self):
+        """ Retrieves itself"""
         return self.__x
 
     @x.setter
     def x(self, x):
-        if type(x) != int:
+        """ Checks whether value is valid for x"""
+        if type(x) is not int:
             raise TypeError("x must be an integer")
         if x < 0:
             raise ValueError("x must be >= 0")
@@ -55,11 +61,13 @@ class Rectangle(Base):
     """ y Getter and Setter"""
     @property
     def y(self):
+        """ Retrieves itself"""
         return self.__y
 
     @y.setter
     def y(self, y):
-        if type(y) != int:
+        """ CHecks whether value is valid for y"""
+        if type(y) is not int:
             raise TypeError("y must be an integer")
         if y < 0:
             raise ValueError("y must be >= 0")
@@ -102,8 +110,8 @@ class Rectangle(Base):
     def __str__(self):
         """ Returns [Rectangle] (<id>) <x>/<y> - <width>/<height>"""
         return ("[Rectangle] ({}) {:d}/{:d} - {:d}/{:d}".
-            format(self.id, self.__x,
-            self.__y, self.__width, self.__height))
+                format(self.id, self.__x,
+                       self.__y, self.__width, self.__height))
 
     def to_dictionary(self):
         """ Returns the dictionary representation of a Rectangle"""
