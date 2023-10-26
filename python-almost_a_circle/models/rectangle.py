@@ -101,8 +101,8 @@ class Rectangle(Base):
 
     def __str__(self):
         """ Returns [Rectangle] (<id>) <x>/<y> - <width>/<height>"""
-        return ("[Rectangle] ({}) {:d}/{:d} - {:d}/{:d}".format(
-            self.__class__.__name__, self.id, self.__x,
+        return ("[Rectangle] ({}) {:d}/{:d} - {:d}/{:d}".
+            format(self.id, self.__x,
             self.__y, self.__width, self.__height))
 
     def to_dictionary(self):
