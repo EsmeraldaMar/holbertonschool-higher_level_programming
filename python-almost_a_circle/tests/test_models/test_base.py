@@ -18,10 +18,7 @@ class TestBaseMethods(unittest.TestCase):
 
     def tearDown(self):
         """ Cleans up JSON files created by tests """
-        try:
-            os.remove("Base.json")
-        except:
-            pass
+        pass
 
     def test_id(self):
         """ Test Assigned ID"""
@@ -52,7 +49,6 @@ class TestBaseMethods(unittest.TestCase):
         self.assertEqual(new.id, 1)
         self.assertEqual(new2.id, 1234)
         self.assertEqual(new3.id, 2)
-
 
     def test_id_nb_objects(self):
         """ Test object attribute """
@@ -130,7 +126,7 @@ were given"
 
         try:
             os.remove("Square.json")
-        except:
+        except (FileNotFoundError, PermissionError):
             pass
 
         Square.save_to_file([])
@@ -147,7 +143,7 @@ were given"
                 self.assertEqual(str_out.getvalue(), result)
         try:
             os.remove("Rectangle.json")
-        except:
+        except (FileNotFoundError, PermissionError):
             pass
 
         Rectangle.save_to_file([])

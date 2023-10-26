@@ -51,7 +51,7 @@ class TestRectangleMethods(unittest.TestCase):
         new = Rectangle(1, 1)
         new2 = Rectangle(1, 1)
         self.assertEqual(False, new is new2)
-        self.assertEqual(False, new.id == new2.id) 
+        self.assertEqual(False, new.id == new2.id)
 
     def test_incorrect_attrs(self):
         """ Test error raise with 1 arg passed """
@@ -196,15 +196,15 @@ class TestRectangleMethods(unittest.TestCase):
         self.assertEqual(new.height, 3)
 
     def test_update_kwargs(self):
-        rectangle = Rectangle(4,4)
-        rectangle.update(id= 2, width= 4, height=4)
+        rectangle = Rectangle(4, 4)
+        rectangle.update(id=2, width=4, height=4)
         self.assertEqual(rectangle.id, 2)
         self.assertEqual(rectangle.width, 4)
         self.assertEqual(rectangle.height, 4)
 
     def test_display_no_args(self):
         """ Test display method with no arguments """
-        r = Rectangle(6,3)
+        r = Rectangle(6, 3)
         with self.assertRaises(TypeError) as e:
             Rectangle.display()
         s = "display() missing 1 required positional argument: 'self'"
@@ -212,7 +212,7 @@ class TestRectangleMethods(unittest.TestCase):
 
     def test_basic_display(self):
         """ Test display without x and y """
-        s1 = Rectangle(2,6)
+        s1 = Rectangle(2, 6)
         result = "##\n##\n##\n##\n##\n##\n"
         with patch('sys.stdout', new=StringIO()) as str_out:
             s1.display()
@@ -282,4 +282,5 @@ class TestRectangleMethods(unittest.TestCase):
         """ Test dictionary output"""
         new = Rectangle(2, 6, 3, 5, 5)
         result = new.to_dictionary()
-        self.assertEqual(result,{'id': 5, 'width': 2, 'height': 6, 'x': 3, 'y': 5})
+        self.assertEqual(result,
+                         {'id': 5, 'width': 2, 'height': 6, 'x': 3, 'y': 5})

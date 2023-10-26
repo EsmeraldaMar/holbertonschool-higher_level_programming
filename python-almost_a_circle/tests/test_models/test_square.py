@@ -11,6 +11,7 @@ import io
 import sys
 import os
 
+
 class TestBaseMethods(unittest.TestCase):
     """ Tests defined for Square class"""
 
@@ -22,7 +23,6 @@ class TestBaseMethods(unittest.TestCase):
         """ Cleans up after each test """
         pass
 
-    
     def test_is_Base_instance(self):
         """ Test Square is a Base instance """
         new = Square(1)
@@ -130,7 +130,7 @@ class TestBaseMethods(unittest.TestCase):
 
     def test_update_kwargs(self):
         square = Square(5)
-        square.update(id= 2, size= 4)
+        square.update(id=2, size=4)
         self.assertEqual(square.id, 2)
         self.assertEqual(square.size, 4)
 
