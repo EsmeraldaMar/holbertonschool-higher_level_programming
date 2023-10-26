@@ -62,6 +62,8 @@ class Base:
                 json_string = f.read()
         except Exception as e:
             return []
+        if not json_string:
+            return []
         instances = []
         inst_dict_list = cls.from_json_string(json_string)
         for i in inst_dict_list:

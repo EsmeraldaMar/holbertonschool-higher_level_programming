@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Module for test class base"""
 import unittest
+import os
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
@@ -20,7 +21,7 @@ class TestBaseMethods(unittest.TestCase):
         """ Cleans up JSON files created by tests """
         try:
             os.remove("Base.json")
-        except:
+        except (FileNotFoundError, PermissionError):
             pass
 
     def test_id(self):
@@ -52,7 +53,6 @@ class TestBaseMethods(unittest.TestCase):
         self.assertEqual(new.id, 1)
         self.assertEqual(new2.id, 1234)
         self.assertEqual(new3.id, 2)
-
 
     def test_id_nb_objects(self):
         """ Test object attribute """
@@ -130,7 +130,7 @@ were given"
 
         try:
             os.remove("Square.json")
-        except:
+        except (FileNotFoundError, PermissionError):
             pass
 
         Square.save_to_file([])
@@ -147,7 +147,7 @@ were given"
                 self.assertEqual(str_out.getvalue(), result)
         try:
             os.remove("Rectangle.json")
-        except:
+        except (FileNotFoundError, PermissionError):
             pass
 
         Rectangle.save_to_file([])
