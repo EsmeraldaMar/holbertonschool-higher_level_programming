@@ -13,22 +13,32 @@ class TestBaseMethods(unittest.TestCase):
     """ Defines test for Base class"""
 
     def setUp(self):
-        """Runs for each test """
+        """Runs for each test reset private attribute"""
         Base._Base__nb_objects = 0
+
+    def tearDown(self):
+        """ Cleans up JSON files created by tests """
+        try:
+            os.remove("Base.json")
+        except:
+            pass
 
     def test_id(self):
         """ Test Assigned ID"""
-        new = Base(1)
-        self.assertEqual(new.id, 1)
+        new = Base(2)
+        self.assertEqual(new.id, 2)
 
     def test_id_default(self):
         """ Test Default ID """
         new = Base()
         self.assertEqual(new.id, 1)
 
-    def tearDown(self):
-        """ Cleans up after each test """
-        pass
+    def test_id_inc(self):
+        """Checks id increments"""
+        b1 = Base()
+        self.assertEqual(b1.id, 1)
+        b2 = Base()
+        self.assertEqual(b2.id, 2)
 
     def test_docstring_pre(self):
         """ Tests if Doc string is present"""
@@ -104,6 +114,11 @@ were given"
         with self.assertRaises(AttributeError):
             new.__nb_objects
 
+    def test_to_json_string(self):
+        self.assertEqual(Base.to_json_string(None), "[]")
+        self.assertEqual(Base.to_json_string([]), "[]")
+        self.assertIsInstance(Base.to_json_string([{'id': 1}]), str)
+
     def test_save_to_file_1(self):
         """ Test JSON file """
         Square.save_to_file(None)
@@ -138,6 +153,7 @@ were given"
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
             self.assertEqual(file.read(), "[]")
+
     def test_load_from_file_empty_file(self):
         """ Test use of load_from_file with empty file """
         try:

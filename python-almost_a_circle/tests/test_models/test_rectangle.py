@@ -23,12 +23,10 @@ class TestRectangleMethods(unittest.TestCase):
         """ Test if docstring is present """
         self.assertIsNotNone(Rectangle.__doc__)
 
-    def test_update_kwargs(self):
-        rectangle = Rectangle(4,4)
-        rectangle.update(id= 2, width= 4, height=4)
-        self.assertEqual(rectangle.id, 2)
-        self.assertEqual(rectangle.width, 4)
-        self.assertEqual(rectangle.height, 4)
+    def test_is_Base_instance(self):
+        """ Test Rectangle is a Base instance """
+        new = Rectangle(1, 1)
+        self.assertEqual(True, isinstance(new, Base))
 
     def test_new_rectangle(self):
         """ Test new rectangle """
@@ -53,12 +51,7 @@ class TestRectangleMethods(unittest.TestCase):
         new = Rectangle(1, 1)
         new2 = Rectangle(1, 1)
         self.assertEqual(False, new is new2)
-        self.assertEqual(False, new.id == new2.id)
-
-    def test_is_Base_instance(self):
-        """ Test Rectangle is a Base instance """
-        new = Rectangle(1, 1)
-        self.assertEqual(True, isinstance(new, Base))
+        self.assertEqual(False, new.id == new2.id) 
 
     def test_incorrect_attrs(self):
         """ Test error raise with 1 arg passed """
@@ -71,8 +64,20 @@ class TestRectangleMethods(unittest.TestCase):
             new = Rectangle()
 
     def test_str_representation(self):
+        """ Test for correct string representation"""
         rectangle = Rectangle(5, 1, 2, 3)
-        self.assertEqual(str(rectangle), "[Rectangle] (Rectangle) 1/2 - 3/5")
+        res = "[Rectangle] (1) 2/3 - 5/1"
+        self.assertEqual(str(rectangle), res)
+
+    def test_check_value(self):
+        """ Test args passed """
+        with self.assertRaises(ValueError):
+            r1 = Rectangle(-1, 2)
+
+    def test_check_value_2(self):
+        """ Test args passed """
+        with self.assertRaises(ValueError):
+            r1 = Rectangle(1, -2)
 
     def test_access_private_attrs(self):
         """ Trying to access to a private attribute """
@@ -190,11 +195,12 @@ class TestRectangleMethods(unittest.TestCase):
         new.height = 3
         self.assertEqual(new.height, 3)
 
-    def test_dictionary(self):
-        """ Test dictionary output"""
-        new = Rectangle(2, 6, 3, 5, 5)
-        result = new.to_dictionary()
-        self.assertEqual(result,{'id': 5, 'width': 2, 'height': 6, 'x': 3, 'y': 5})
+    def test_update_kwargs(self):
+        rectangle = Rectangle(4,4)
+        rectangle.update(id= 2, width= 4, height=4)
+        self.assertEqual(rectangle.id, 2)
+        self.assertEqual(rectangle.width, 4)
+        self.assertEqual(rectangle.height, 4)
 
     def test_display_no_args(self):
         """ Test display method with no arguments """
@@ -204,9 +210,17 @@ class TestRectangleMethods(unittest.TestCase):
         s = "display() missing 1 required positional argument: 'self'"
         self.assertEqual(str(e.exception), s)
 
+    def test_basic_display(self):
+        """ Test display without x and y """
+        s1 = Rectangle(2,6)
+        result = "##\n##\n##\n##\n##\n##\n"
+        with patch('sys.stdout', new=StringIO()) as str_out:
+            s1.display()
+            self.assertEqual(str_out.getvalue(), result)
+
     def test_str_out(self):
         s = Rectangle(4, 5, 9, 7)
-        result = "[Rectangle] (Rectangle) 1/9 - 7/4\n"
+        result = "[Rectangle] (1) 9/7 - 4/5\n"
         with patch('sys.stdout', new=StringIO()) as str_out:
             print(s)
             self.assertEqual(str_out.getvalue(), result)
@@ -253,14 +267,6 @@ class TestRectangleMethods(unittest.TestCase):
         new2 = Rectangle(10, 10)
         self.assertEqual(new2.area(), 100)
 
-    def test_basic_display(self):
-        """ Test display without x and y """
-        s1 = Rectangle(2,6)
-        result = "##\n##\n##\n##\n##\n##\n"
-        with patch('sys.stdout', new=StringIO()) as str_out:
-            s1.display()
-            self.assertEqual(str_out.getvalue(), result)
-
     def test_dict_to_json(self):
         """ Test Dictionary to JSON string """
         r1 = Rectangle(2, 2)
@@ -272,12 +278,8 @@ class TestRectangleMethods(unittest.TestCase):
             print(json_dictionary)
             self.assertEqual(str_out.getvalue(), res.replace("'", "\""))
 
-    def test_check_value(self):
-        """ Test args passed """
-        with self.assertRaises(ValueError):
-            r1 = Rectangle(-1, 2)
-
-    def test_check_value_2(self):
-        """ Test args passed """
-        with self.assertRaises(ValueError):
-            r1 = Rectangle(1, -2)
+    def test_dictionary(self):
+        """ Test dictionary output"""
+        new = Rectangle(2, 6, 3, 5, 5)
+        result = new.to_dictionary()
+        self.assertEqual(result,{'id': 5, 'width': 2, 'height': 6, 'x': 3, 'y': 5})
