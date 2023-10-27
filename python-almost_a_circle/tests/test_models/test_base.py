@@ -24,6 +24,11 @@ class TestBaseMethods(unittest.TestCase):
         except (FileNotFoundError, PermissionError):
             pass
 
+    def test_id_input(self):
+        """Test - id inputted as arg"""
+        b3 = Base(12)
+        self.assertEqual(b3.id, 12)
+
     def test_id(self):
         """ Test Assigned ID"""
         new = Base(2)
@@ -182,6 +187,48 @@ were given"
         self.assertEqual(str(r1), str(r2))
         self.assertFalse(r1 is r2)
         self.assertFalse(r1 == r2)
+
+    def test_base_to_json_string(self):
+        """Test - to_json_string list_dictionaries is not empty"""
+        json_dictionary = Base.to_json_string([{'id': 10}])
+        self.assertEqual(json_dictionary, "[{\"id\": 10}]")
+
+    def test_base_to_json_string_none(self):
+        """Test - to_json_string list_dictionaries is None"""
+        json_dictionary = Base.to_json_string(None)
+        self.assertEqual(json_dictionary, "[]")
+
+    def test_base_to_json_string_empty(self):
+        """Test - to_json_string list_dictionaries is empty"""
+        input = []
+        self.assertEqual(Base.to_json_string(input), "[]")
+
+    def test_base_to_json_string_type(self):
+        """Test - to_json_string makes the correct type"""
+        input = Base.to_json_string([{'id': 10}])
+        self.assertEqual(type(input).__name__, "str")
+
+    def test_from_json_string(self):
+        """Test - from_json_string converts correctly"""
+        input = "[{\"id\": 89}]"
+        expected = [{"id": 89}]
+        self.assertEqual(Base.from_json_string(input), expected)
+
+    def test_from_json_string_none(self):
+        """Test - from_json_string is None"""
+        input = None
+        expected = []
+        self.assertEqual(Base.from_json_string(input), expected)
+
+    def test_from_json_string_empty(self):
+        """Test - from_json_string is empty"""
+        input = "[]"
+        self.assertEqual(Base.from_json_string(input), [])
+
+    def test_from_json_string_type(self):
+        """Test - from_json_string creates correct type"""
+        input = Base.from_json_string("[{\"id\": 89}]")
+        self.assertEqual(type(input).__name__, "list")
 
     if __name__ == '__main__':
         unittest.main()
