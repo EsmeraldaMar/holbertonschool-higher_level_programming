@@ -54,6 +54,17 @@ class TestBaseMethods(unittest.TestCase):
         self.assertEqual(new2.id, 1234)
         self.assertEqual(new3.id, 2)
 
+    def test_missing_args(self):
+        """ Test for missing arguments"""
+        base1 = Base()
+        self.assertEqual(base1.id, 1)
+        base1_c = base1.id > 0
+        self.assertEqual(base1_c, True)
+        base2 = Base()
+        self.assertEqual(base1.id + 1, base2.id)
+        base3 = Base(2)
+        self.assertEqual(base3.id, 2)
+
     def test_id_nb_objects(self):
         """ Test object attribute """
         new = Base()
@@ -171,3 +182,6 @@ were given"
         self.assertEqual(str(r1), str(r2))
         self.assertFalse(r1 is r2)
         self.assertFalse(r1 == r2)
+
+    if __name__ == '__main__':
+        unittest.main()
