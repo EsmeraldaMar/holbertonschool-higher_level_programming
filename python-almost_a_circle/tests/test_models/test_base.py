@@ -24,15 +24,33 @@ class TestBaseMethods(unittest.TestCase):
         except (FileNotFoundError, PermissionError):
             pass
 
+    def test_id(self):
+        """Test - generated id"""
+        b1 = Base()
+        self.assertEqual(b1.id, 1)
+        b2 = Base()
+        self.assertEqual(b2.id, 2)
+        a = Base()
+        x = a.id > 0
+        self.assertEqual(x, True)
+        b = Base()
+        self.assertEqual(b.id, a.id + 1)
+
+    def test_missing_args(self):
+        """ Test for missing arguments"""
+        base1 = Base()
+        self.assertEqual(base1.id, 1)
+        base1_c = base1.id > 0
+        self.assertEqual(base1_c, True)
+        base2 = Base()
+        self.assertEqual(base1.id + 1, base2.id)
+        base3 = Base(2)
+        self.assertEqual(base3.id, 2)
+
     def test_id_input(self):
         """Test - id inputted as arg"""
         b3 = Base(12)
         self.assertEqual(b3.id, 12)
-
-    def test_id(self):
-        """ Test Assigned ID"""
-        new = Base(2)
-        self.assertEqual(new.id, 2)
 
     def test_id_default(self):
         """ Test Default ID """
@@ -46,10 +64,6 @@ class TestBaseMethods(unittest.TestCase):
         b2 = Base()
         self.assertEqual(b2.id, 2)
 
-    def test_docstring_pre(self):
-        """ Tests if Doc string is present"""
-        self.assertIsNotNone(Base.__doc__)
-
     def test_dif_id(self):
         """ Test different nb object attributes and assigned id"""
         new = Base()
@@ -58,17 +72,6 @@ class TestBaseMethods(unittest.TestCase):
         self.assertEqual(new.id, 1)
         self.assertEqual(new2.id, 1234)
         self.assertEqual(new3.id, 2)
-
-    def test_missing_args(self):
-        """ Test for missing arguments"""
-        base1 = Base()
-        self.assertEqual(base1.id, 1)
-        base1_c = base1.id > 0
-        self.assertEqual(base1_c, True)
-        base2 = Base()
-        self.assertEqual(base1.id + 1, base2.id)
-        base3 = Base(2)
-        self.assertEqual(base3.id, 2)
 
     def test_id_nb_objects(self):
         """ Test object attribute """
