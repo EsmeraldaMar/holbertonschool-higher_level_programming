@@ -2,13 +2,11 @@
 """ Module for test class base"""
 import unittest
 import os
+from io import StringIO
+from unittest.mock import patch
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
-from io import StringIO
-from unittest import TestCase
-from unittest.mock import patch
-
 
 class TestBaseMethods(unittest.TestCase):
     """ Defines test for Base class"""
@@ -232,6 +230,5 @@ were given"
         """Test - from_json_string creates correct type"""
         input = Base.from_json_string("[{\"id\": 89}]")
         self.assertEqual(type(input).__name__, "list")
-
     if __name__ == '__main__':
         unittest.main()

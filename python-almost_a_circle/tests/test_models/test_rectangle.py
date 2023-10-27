@@ -423,7 +423,5 @@ class TestRectangleMethods(unittest.TestCase):
         output = Rectangle.load_from_file()
         self.assertEqual(str(output[0]), '[Rectangle] (5) 3/4 - 1/2')
         os.remove("Rectangle.json")
-
-
 if __name__ == '__main__':
     unittest.main()
