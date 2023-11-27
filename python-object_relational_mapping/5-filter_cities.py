@@ -13,9 +13,6 @@ if __name__ == "__main__":
     # Makes a connection to the database
     db = MySQLdb.connect(host="localhost", port=3306, user=sys.argv[1],
                          passwd=sys.argv[2], db=sys.argv[3])
-
-    # Gives us the ability to have multiple separate working environments
-    # through the same connection to the database
     # creates cursor to execute query
     cursor = db.cursor()
     # tuple for parametres
