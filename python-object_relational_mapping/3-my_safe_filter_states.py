@@ -16,14 +16,18 @@ if __name__ == "__main__":
 
     # Gives us the ability to have multiple separate working environments
     # through the same connection to the database
+    # creates cursor to execute query
     cursor = db.cursor()
+    # tuple for parametres
     search_name = sys.argv[4]
+    # execute query
     cursor.execute("SELECT * FROM states WHERE BINARY name\
-                    LIKE %s ORDER BY id;".format(search_name))
-
+                    LIKE %s ORDER BY id ASC;", (search_name,))
+    # fetch rpows returned by query
     rows = cursor.fetchall()
+    # Iterate and print rows
     for i in rows:
         print(i)
-    # Clean up Process
+    # Clean up Process, close cursor and db connection
     cursor.close()
     db.close()
