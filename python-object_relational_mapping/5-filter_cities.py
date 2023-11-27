@@ -21,8 +21,8 @@ if __name__ == "__main__":
     query = """SELECT cities.name FROM states\
         JOIN cities ON states.id = cities.state_id WHERE states.name = %s\
             ORDER BY cities.id ASC;"""
-    # execute query
-    cursor.execute(query, search_name)
+    # execute query with parameters as a tuple
+    cursor.execute(query, (search_name,))
     # fetch rows returned by query
     rows = cursor.fetchall()
     # empty tuple to hold row values
